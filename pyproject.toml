@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "timesignal"
+version = "0.1.0"
+description = "Analysis library for signals that vary with time"
+readme = "README.md"
+authors = ["Kevin Barnard <kbarnard@mbari.org>"]
+
+[tool.poetry.dependencies]
+python = ">= 3.8, < 3.11"
+intervaltree = "^3.1.0"
+numpy = "^1.22.4"
+scipy = "^1.8.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

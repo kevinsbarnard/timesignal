@@ -1,0 +1,1 @@
+from timesignal.models.signal import EventSignal
