@@ -7,7 +7,7 @@ from scipy import interpolate
 
 class EventSignal:
     """
-    Iterpolable scalar-valued signal of discrete events.
+    Interpolable scalar-valued signal of discrete events.
     """
     
     def __init__(self, values=None, interpolation='linear'):

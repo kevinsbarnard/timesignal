@@ -1,1 +1,1 @@
-from timesignal.models import EventSignal
+from timesignal.models import EventSignal, EventSignalOrchestra
