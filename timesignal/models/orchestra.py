@@ -1,5 +1,6 @@
 from datetime import datetime
 from typing import Dict, Iterable, Tuple
+
 from timesignal.models.signal import EventSignal
 
 
@@ -54,3 +55,20 @@ class EventSignalOrchestra:
 
     def __getitem__(self, time_index: datetime):
         return self.get_dict_at_datetime(time_index)
+
+
+
+def test():
+    from timesignal.models import signal
+    
+    es1 = signal.test(n=10, m=5)
+    es2 = signal.test(n=10, m=3)
+    es3 = signal.test(n=10, m=2)
+    
+    eso = EventSignalOrchestra({
+        'es1': es1,
+        'es2': es2,
+        'es3': es3,
+    })
+    
+    return eso
