@@ -43,19 +43,20 @@ class EventOrchestra:
         for name, signal in self._elements.items():
             try:
                 value = signal[time_index]
-                yield name, value
+                if value is not None:
+                    yield name, value
             except ValueError:
                 pass
 
-    def get_dict_at_datetime(self, time_index: datetime) -> Dict[str, Union[float, dict]]:
+    def get_dict_at_datetime(self, time_index: datetime, include_empty: bool = False) -> Dict[str, Union[float, dict]]:
         """
         Get a dictionary of all valid event signal values at a given datetime.
         Recursively calls get_dict_at_datetime on all nested event orchestras.
         """
-        d = {}
-        for name, value in self.get_name_value_pairs_at_datetime(time_index):
-            d[name] = value.get_dict_at_datetime(time_index) if isinstance(value, EventOrchestra) else value
-        return d
+        d = dict(self.get_name_value_pairs_at_datetime(time_index))
+        
+        if d or include_empty:
+            return d
 
     def __getitem__(self, time_index: datetime):
         return self.get_dict_at_datetime(time_index)
